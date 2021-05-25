@@ -93,6 +93,7 @@ export class App extends Component {
     if (response.status === 200) {
       const game = await response.json()
       this.setState(game)
+      this.checkStateState()
     }
   }
 
