@@ -15,9 +15,13 @@ header {
   margin: auto;
 }
 
+section {
+  margin-bottom: 1rem;
+}
+
 ul {
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 2rem;
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

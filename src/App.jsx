@@ -36,18 +36,20 @@ export class App extends Component {
       // Update Game ID display
       let notify = document.querySelector('p')
       notify.textContent = `Game ID: ${this.state.id}`
+      this.checkStateState()
     }
   }
 
   checkStateState() {
+    let notify = document.querySelector('p')
+    let info = document.querySelector('section')
     if (this.state.state === 'won') {
-      let notify = document.querySelector('p')
       notify.textContent = `You Win!`
     }
     if (this.state.state === 'lost') {
-      let notify = document.querySelector('p')
       notify.textContent = `You Lose :(`
     }
+    info.textContent = `mines: ${this.state.mines}`
   }
 
   handleClickOnCell = async (clickedRowIndex, clickedColumnIndex) => {
@@ -103,6 +105,7 @@ export class App extends Component {
         <header>
           <h1>Welcome to Boom Flagger</h1>
           <p>Click on New Game!</p>
+          <section></section>
         </header>
         <button onClick={this.handleNewGame}>New Game</button>
         <ul>
