@@ -49,7 +49,7 @@ export class App extends Component {
     if (this.state.state === 'lost') {
       notify.textContent = `You Lose :(`
     }
-    info.textContent = `mines: ${this.state.mines}`
+    info.textContent = `Booms remaining to Flag: ${this.state.mines}`
   }
 
   handleClickOnCell = async (clickedRowIndex, clickedColumnIndex) => {
@@ -102,29 +102,47 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <header>
-          <h1>Welcome to Boom Flagger</h1>
-          <p>Click on New Game!</p>
-          <section></section>
-        </header>
-        <button onClick={this.handleNewGame}>New Game</button>
-        <ul>
-          {this.state.board.map((row, rowIndex) => {
-            return row.map((cell, columnIndex) => {
-              return (
-                <li
-                  key={columnIndex}
-                  onClick={() => this.handleClickOnCell(rowIndex, columnIndex)}
-                  onContextMenu={() =>
-                    this.handleFlagOnCell(rowIndex, columnIndex)
-                  }
-                >
-                  {cell}
-                </li>
-              )
-            })
-          })}
-        </ul>
+        <body>
+          <header>
+            <h1>Welcome to Boom Flagger</h1>
+            <p>Click on New Game!</p>
+            <button onClick={this.handleNewGame}>New Game</button>
+            <table>
+              <thead>
+                <tr>
+                  <th colSpan={2}>How to play:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Left Click: Boom?</td>
+                  <td>Right Click: Flag</td>
+                </tr>
+              </tbody>
+            </table>
+            <section>Remaining Booms to Flag: 0</section>
+          </header>
+          <div className="container">
+            {this.state.board.map((row, rowIndex) => {
+              return row.map((cell, columnIndex) => {
+                return (
+                  <div
+                    className="cell"
+                    key={columnIndex}
+                    onClick={() =>
+                      this.handleClickOnCell(rowIndex, columnIndex)
+                    }
+                    onContextMenu={() =>
+                      this.handleFlagOnCell(rowIndex, columnIndex)
+                    }
+                  >
+                    {cell}
+                  </div>
+                )
+              })
+            })}
+          </div>
+        </body>
       </div>
     )
   }
