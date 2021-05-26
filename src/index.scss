@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round');
+
 :root {
   font: 16px / 1 sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 html {
@@ -64,7 +67,7 @@ section {
 .container {
   padding: 0.3rem;
   margin: auto;
-  margin-top: 0.5rem;
+  margin-top: 0rem;
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
