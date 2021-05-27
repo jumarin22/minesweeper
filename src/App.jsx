@@ -17,6 +17,13 @@ export class App extends Component {
     mines: '',
   }
 
+  nameCell = cell => {
+    if (cell != '_') {
+      return 'cell'
+    }
+    return 'empty'
+  }
+
   handleNewGame = async () => {
     // Make a POST to ask for a new game
     const response = await fetch(
@@ -101,7 +108,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <body>
           <header>
             <h1>Welcome to Boom Flagger</h1>
@@ -127,7 +134,7 @@ export class App extends Component {
               return row.map((cell, columnIndex) => {
                 return (
                   <div
-                    className="cell"
+                    className={this.nameCell(cell)}
                     key={columnIndex}
                     onClick={() =>
                       this.handleClickOnCell(rowIndex, columnIndex)
@@ -143,7 +150,7 @@ export class App extends Component {
             })}
           </div>
         </body>
-      </div>
+      </>
     )
   }
 }
