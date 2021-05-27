@@ -10,8 +10,7 @@ html {
 }
 
 body {
-  margin: 0.5rem;
-  display: flex;
+  margin: 1rem;
   min-height: 100%;
   text-align: center;
   flex-direction: column;
@@ -65,6 +64,8 @@ section {
 }
 
 .container {
+  max-width: fit-content;
+  max-height: fit-content;
   padding: 0.3rem;
   margin: auto;
   margin-top: 0rem;
@@ -97,4 +98,38 @@ section {
 
 .empty {
   color: #333;
+  display: flex;
+  padding: 0.3rem;
+  height: 1.5rem;
+  width: 2rem;
+  border: thin solid #333;
+  border-radius: 1rem;
+  font-weight: bold;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+}
+
+.flag {
+  visibility: hidden;
+}
+
+.flag:after {
+  display: flex;
+  visibility: visible;
+  align-content: center;
+  justify-content: center;
+  content: '🚩';
+}
+
+.boom {
+  visibility: hidden;
+}
+
+.boom::after {
+  display: flex;
+  visibility: visible;
+  align-content: center;
+  justify-content: center;
+  content: '💥';
 }

@@ -18,10 +18,16 @@ export class App extends Component {
   }
 
   nameCell = cell => {
-    if (cell != '_') {
-      return 'cell'
+    switch (cell) {
+      case '_':
+        return 'empty'
+      case 'F':
+        return 'cell flag'
+      case '*':
+        return 'boom'
+      default:
+        return 'cell'
     }
-    return 'empty'
   }
 
   handleNewGame = async () => {
@@ -109,47 +115,43 @@ export class App extends Component {
   render() {
     return (
       <>
-        <body>
-          <header>
-            <h1>Welcome to Boom Flagger</h1>
-            <p>Click on New Game!</p>
-            <button onClick={this.handleNewGame}>New Game</button>
-            <table>
-              <thead>
-                <tr>
-                  <th colSpan={2}>How to play:</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Left Click: Boom?</td>
-                  <td>Right Click: Flag</td>
-                </tr>
-              </tbody>
-            </table>
-            <section>Remaining Booms to Flag: 0</section>
-          </header>
-          <div className="container">
-            {this.state.board.map((row, rowIndex) => {
-              return row.map((cell, columnIndex) => {
-                return (
-                  <div
-                    className={this.nameCell(cell)}
-                    key={columnIndex}
-                    onClick={() =>
-                      this.handleClickOnCell(rowIndex, columnIndex)
-                    }
-                    onContextMenu={() =>
-                      this.handleFlagOnCell(rowIndex, columnIndex)
-                    }
-                  >
-                    {cell}
-                  </div>
-                )
-              })
-            })}
-          </div>
-        </body>
+        <header>
+          <h1>Welcome to Boom Flagger</h1>
+          <p>Click on New Game!</p>
+          <button onClick={this.handleNewGame}>New Game</button>
+          <table>
+            <thead>
+              <tr>
+                <th colSpan={2}>How to play:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Left Click: Boom?</td>
+                <td>Right Click: Flag</td>
+              </tr>
+            </tbody>
+          </table>
+          <section>Remaining Booms to Flag: 0</section>
+        </header>
+        <div className="container">
+          {this.state.board.map((row, rowIndex) => {
+            return row.map((cell, columnIndex) => {
+              return (
+                <div
+                  className={this.nameCell(cell)}
+                  key={columnIndex}
+                  onClick={() => this.handleClickOnCell(rowIndex, columnIndex)}
+                  onContextMenu={() =>
+                    this.handleFlagOnCell(rowIndex, columnIndex)
+                  }
+                >
+                  {cell}
+                </div>
+              )
+            })
+          })}
+        </div>
       </>
     )
   }
