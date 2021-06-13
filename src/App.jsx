@@ -43,7 +43,6 @@ export class App extends Component {
     if (response.status === 200) {
       // Get the response as JSON
       const game = await response.json()
-      console.log(game)
       // Make that the new state!
       this.setState(game)
       // Update Game ID display
